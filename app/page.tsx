@@ -1,33 +1,39 @@
-import { adminDb } from "@/lib/firebase-admin"
+import { useEffect, useState } from "react"
 import dynamic from "next/dynamic"
+import { adminDb } from "@/lib/firebase-admin"
+import AdBlock from "@/components/AdBlock"
 
-const AdBlock = dynamic(() => import("@/components/AdBlock"), { ssr: false })
+// const AdBlock = dynamic(() => import("@/components/AdBlock"), { ssr: false })
 
 export interface TestAdParcel {
   adParcelId: number
 }
 
-export default async function Home() {
-  const rand = Math.random()
-  console.log(rand)
-  async function getTestAdParcelIds() {
-    const collectionRef = adminDb.collection("testAdParcelIds")
-    const snapshot = await collectionRef.get()
-    const testAdParcels = snapshot.docs.map((doc) => ({
-      ...doc.data(),
-    })) as TestAdParcel[]
-    return testAdParcels
-  }
+export default function Home() {
+  // const [adParcelId, setAdParcelId] = useState<number | null>(null);
 
-  const testAdParcels = await getTestAdParcelIds()
-  const adParcelId = testAdParcels[0].adParcelId
-  console.log("adParcelId: ", adParcelId)
+  // useEffect(() => {
+  //   async function fetchAdParcelId() {
+  //     const collectionRef = adminDb.collection("testAdParcelIds");
+  //     const snapshot = await collectionRef.get();
+  //     const testAdParcels = snapshot.docs.map((doc) => ({
+  //       ...doc.data(),
+  //     })) as TestAdParcel[];
+  //     setAdParcelId(testAdParcels[0].adParcelId);
+  //   }
+
+  //   fetchAdParcelId();
+  // }, []);
+
+  // if (adParcelId === null) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <main className="p-8 min-h-[100vh]">
-      <h1 className="text-3xl mb-4">AD SANDBOX {rand}</h1>
+      <h1 className="text-3xl mb-4">AD SANDBOX</h1>
       <div className="flex flex-col gap-8">
-        <p>Parcel id: {adParcelId}</p>
+        <p>Parcel id: {782576213}</p>
         <AdBlock adParcelId={782576213} />
       </div>
     </main>
