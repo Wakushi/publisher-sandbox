@@ -1,5 +1,7 @@
-import AdBlock from "@/components/AdBlock"
 import { adminDb } from "@/lib/firebase-admin"
+import dynamic from "next/dynamic"
+
+const AdBlock = dynamic(() => import("@/components/AdBlock"), { ssr: false })
 
 export interface TestAdParcel {
   adParcelId: number
@@ -19,6 +21,7 @@ export default async function Home() {
 
   const testAdParcels = await getTestAdParcelIds()
   const adParcelId = testAdParcels[0].adParcelId
+  console.log("adParcelId: ", adParcelId)
 
   return (
     <main className="p-8 min-h-[100vh]">
