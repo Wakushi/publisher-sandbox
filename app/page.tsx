@@ -6,8 +6,9 @@ export interface TestAdParcel {
 }
 
 export default async function Home() {
+  const rand = Math.random()
+  console.log(rand)
   async function getTestAdParcelIds() {
-    "no-store"
     const collectionRef = adminDb.collection("testAdParcelIds")
     const snapshot = await collectionRef.get()
     const testAdParcels = snapshot.docs.map((doc) => ({
@@ -21,7 +22,7 @@ export default async function Home() {
 
   return (
     <main className="p-8 min-h-[100vh]">
-      <h1 className="text-3xl mb-4">AD SANDBOX</h1>
+      <h1 className="text-3xl mb-4">AD SANDBOX {rand}</h1>
       <div className="flex flex-col gap-8">
         <p>Parcel id: {adParcelId}</p>
         <AdBlock adParcelId={adParcelId} />
