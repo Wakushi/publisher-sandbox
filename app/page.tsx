@@ -25,7 +25,7 @@ export default async function Home() {
       <h1 className="text-3xl mb-4">AD SANDBOX {rand}</h1>
       <div className="flex flex-col gap-8">
         <p>Parcel id: {adParcelId}</p>
-        <AdBlock adParcelId={adParcelId} />
+        <AdBlock adParcelId={782576213} />
       </div>
     </main>
   )
