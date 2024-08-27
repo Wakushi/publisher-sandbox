@@ -1,3 +1,4 @@
+export const fetchCache = "force-no-store"
 import { adminDb } from "@/lib/firebase-admin"
 import AdBlock from "@/components/AdBlock"
 
@@ -7,7 +8,6 @@ export interface TestAdParcel {
 
 export default async function Home() {
   async function fetchAdParcelId() {
-    "no-store"
     const collectionRef = adminDb.collection("testAdParcelIds")
     const snapshot = await collectionRef.get()
     const testAdParcels = snapshot.docs.map((doc) => ({
