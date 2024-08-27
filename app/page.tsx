@@ -1,4 +1,3 @@
-export const fetchCache = "force-no-store"
 import { adminDb } from "@/lib/firebase-admin"
 import AdBlock from "@/components/AdBlock"
 
